@@ -1,0 +1,8 @@
+.git
+.gitignore
+
+docs/
+*.egg-info
+*.xls
+*.xlsx
+*.csv

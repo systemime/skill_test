@@ -1,0 +1,7 @@
+from django.urls import path
+from apps.{{ app_name }} import views
+
+
+urlpatterns = [
+
+]
