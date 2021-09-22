@@ -3,9 +3,16 @@
 import os
 import sys
 
+# import subprocess
+
 
 def main():
     """Run administrative tasks."""
+
+    # subprocess.call(
+    #     ["gunicorn", "-c", "deploy/run.py", "skill_test.asgi:application", "--reload", "--reload-engine", "auto"]  # noqa
+    # )
+
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "skill_test.settings.base")
     try:
         from django.core.management import execute_from_command_line

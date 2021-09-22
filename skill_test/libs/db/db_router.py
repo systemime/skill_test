@@ -1,12 +1,13 @@
 from django.conf import settings
 
-BUILDIN_LABEL = "contenttypes"
+BUILDIN_LABEL = ("contenttypes",)
+DEFAULT_DB = "skill_db_system"
 
 
 class MasterSlaveDBRouter:
     @staticmethod
     def get_db(model):
-        return settings.DATABASE_APPS_MAPPING[model._meta.app_label]
+        return settings.DATABASE_APPS_MAPPING.get(model._meta.app_label) or DEFAULT_DB
 
     @staticmethod
     def allow_migrate(db, app_label, model_name=None, **hints):

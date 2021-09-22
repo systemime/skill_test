@@ -27,7 +27,7 @@ workers = 2
 # 指定每个进程开启的线程数
 threads = 1
 
-worker_class = "deploy.uvicorn_worker.SQUvicornWorker"
+worker_class = "deploy.uvicorn_worker.SQUvicornWorker"  # 重载uvicorn worker
 """
 # worker_class = 'gunicorn.workers.ggevent.GeventWorker'  # 协程模式
 # worker_class = 'uvicorn.workers.UvicornWorker'  # 原生uvicorn模式
@@ -37,10 +37,10 @@ worker_connections = 5000  # 并发客户端的最大数量
 max_requests = 4000  # worker在重新启动之前将处理的最大请求数 0 禁止自动重启
 max_requests_jitter = 200  # max_requests 抖动
 
-timeout = 30  # 未工作的worker沉默timeout后重启
+timeout = 60  # 未工作的worker沉默timeout后重启
 graceful_timeout = 30  # 重启前给予该时间完成工作
 
-keep_alive = 3  # 等待链接秒数
+keep_alive = 5  # 等待链接秒数
 
 reload = True
 

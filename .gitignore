@@ -2,6 +2,7 @@
 site/
 deploy/docs/nginx/htpasswd_docs_autobutler
 deploy/docs/users.lst
+logs/
 
 .vscode
 .idea

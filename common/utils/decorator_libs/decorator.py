@@ -16,7 +16,7 @@ from functools import wraps
 from multiprocessing import Process
 
 from flask import request as flask_request
-from nb_log import LoggerMixin, LogManager, nb_print
+from nb_log import LoggerMixin, LogManager, nb_print  # noqa
 
 os_name = os.name
 handle_exception_log = LogManager("function_error").get_logger_and_add_handlers()
