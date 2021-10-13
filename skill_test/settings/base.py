@@ -162,12 +162,10 @@ DATABASES = {
     },
 }
 
-DATABASE_APPS_MAPPING = {
-    "share": "skill_db_app",
-}
+DATABASE_APPS_MAPPING = {"skill_db_app": ("share",)}
 
 # APP路由映射
-# DATABASE_ROUTERS = ['skill_test.libs.db.db_router.MasterSlaveDBRouter']
+DATABASE_ROUTERS = ["skill_test.libs.db.db_router.MasterSlaveDBRouter"]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -286,3 +284,27 @@ HASHID_FIELD_SALT = env("HASHID_FIELD_SALT")
 HASHID_ALPHABETS = env("HASHID_ALPHABETS")
 HASHID_FIELD_MIN_LENGTH = env.int("HASHID_FIELD_MIN_LENGTH")
 HASHID_FIELD_ALLOW_INT_LOOKUP = env.bool("HASHID_FIELD_ALLOW_INT_LOOKUP", default=True)
+
+
+# ================================Log==========================================
+# LOGGING_CONFIG = "logging.config.dictConfig"
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'root': {
+#         'handlers': ['console'],
+#         'level': 'WARNING',
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': "INFO",
+#             'propagate': False,
+#         },
+#     },
+# }

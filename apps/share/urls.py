@@ -2,4 +2,7 @@ from django.urls import path
 
 from apps.share import views
 
-urlpatterns = [path("", views.test)]
+urlpatterns = [
+    path("", views.test),
+    path("s/", views.tests),
+]

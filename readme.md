@@ -27,3 +27,13 @@ sudo py-spy top --pid 17010 --idle --gil --subprocesses
 # 火焰图
 sudo py-spy record --pid 17010 --idle --gil --subprocesses
 ```
+
+## 清理迁移文件
+```shell
+cd apps
+
+lists=$(ls)
+for i in $lists;do
+	ls -d $i/migrations/* | grep -v '__init__.py' | xargs rm -rf
+done
+```
