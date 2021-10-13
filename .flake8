@@ -34,6 +34,8 @@ ignore =
     E722
     # bin op line break, invalid
     W503
+    # 暂时忽略
+    F401
 
 # per-file-ignores =
 #     # __init__ module exports names
