@@ -8,9 +8,13 @@ from .env import env
 # FIXME: 推荐rabbitmq
 CELERY_BROKER_URL = env(
     "CELERY_BROKER_URL",
-    default=env("REDIS_URL").format(env("REDIS_PASSWD", default="")),
+    default=env("REDIS_URL").format(f":{env('REDIS_PASSWD', default='')}"),
 )
 CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", default=CELERY_BROKER_URL)
+
+if env.bool("REDIS_IS_SSL", False):
+    BROKER_USE_SSL = env.dict("BROKER_USE_SSL")
+    CELERY_REDIS_BACKEND_USE_SSL = env.dict("CELERY_REDIS_BACKEND_USE_SSL")
 
 # 结果相关
 CELERY_TASK_IGNORE_RESULT = env("CELERY_TASK_IGNORE_RESULT", default=False)
@@ -73,3 +77,7 @@ if env_celery_routes is not None:
                 }
             }
         )
+
+
+# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULER = "skill_test.libs.schedulers:SQDatabaseSchedule"

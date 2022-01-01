@@ -1,23 +1,22 @@
 from django.conf import settings
 
 BUILDIN_LABEL = ("contenttypes", "admin", "auth", "django_celery_beat", "sessions")
-SYSTEM_DB = "skill_db_system"
-APP_DB = "skill_db_app"
-app_db = settings.DATABASE_APPS_MAPPING["skill_db_app"]
+app_db = settings.DATABASE_APPS_MAPPING[settings.APP_DB]
 
 
 class MasterSlaveDBRouter:
     @staticmethod
     def get_db(model):
-        return APP_DB if model._meta.app_label in app_db else SYSTEM_DB
+        return (
+            settings.APP_DB if model._meta.app_label in app_db else settings.SYSTEM_DB
+        )
 
     @staticmethod
     def allow_migrate(db, app_label, model_name=None, **hints):
         """允许迁移"""
-        # return None
-        if app_label in app_db and db == APP_DB:
+        if app_label in app_db and db == settings.APP_DB:
             return True
-        if app_label in BUILDIN_LABEL and db == SYSTEM_DB:
+        if app_label in BUILDIN_LABEL and db == settings.SYSTEM_DB:
             return True
         return False
 

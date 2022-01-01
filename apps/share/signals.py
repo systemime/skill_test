@@ -16,8 +16,8 @@ def before_dispatch_info_change(
 ):  # pylint: disable=all
 
     instance.is_remove = True
-    print(kwargs)
-    logger.error(kwargs)
+    # print(kwargs)
+    # logger.error(kwargs)
 
 
 # pre_save.connect(before_dispatch_info_change, sender=Country)
@@ -27,8 +27,9 @@ def before_dispatch_info_change(
 def after_dispatch_info_change(
     sender, instance: Country, **kwargs
 ):  # pylint: disable=all
-    print(kwargs)
-    logger.error(kwargs)
+    # print(kwargs)
+    # logger.error(kwargs)
+    pass
 
 
 # post_save.connect(after_dispatch_info_change, sender=Country)

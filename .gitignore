@@ -506,3 +506,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/python,virtualenv,macos,linux,windows,visualstudiocode,vim,emacs,sublimetext,jetbrains,ansible,java,django
+
+# Ignore dynaconf secret files
+.secrets.*

@@ -58,7 +58,7 @@ MODEL_APPS = [
 ]
 
 # 项目app
-PROJECT_APPS = ["apps.share"]
+PROJECT_APPS = ["apps.share", "apps.proxy_pool"]
 
 INSTALLED_APPS = DJANGO_APPS + MODEL_APPS + PROJECT_APPS
 
@@ -162,7 +162,9 @@ DATABASES = {
     },
 }
 
-DATABASE_APPS_MAPPING = {"skill_db_app": ("share",)}
+APP_DB = "skill_db_app"
+SYSTEM_DB = "skill_db_system"
+DATABASE_APPS_MAPPING = {APP_DB: ("share", "proxy_pool")}
 
 # APP路由映射
 DATABASE_ROUTERS = ["skill_test.libs.db.db_router.MasterSlaveDBRouter"]
@@ -259,6 +261,16 @@ CACHES = {
             # 防止redis意外关闭造成异常，memcached backend 的默认行为 django-redis配置项
             "IGNORE_EXCEPTIONS": True,
             "PASSWORD": REDIS_PASSWD,
+            # "CONNECTION_POOL_KWARGS": {
+            #     "max_connections": 100,
+            #     "retry_on_timeout": True,
+            #     "ssl_ca_certs": "/config_file/ca.crt"
+            # },
+            # "REDIS_CLIENT_KWARGS": {
+            #     'skip_full_coverage_check': True,
+            #     "ssl_cert_reqs": False,
+            #     "ssl": True
+            # }
         },
     }
 }
@@ -274,6 +286,7 @@ CHANNEL_LAYERS = {
         "CONFIG": {
             # "hosts": [('127.0.0.1', 6379)],
             "hosts": [REDIS_URL.format(REDIS_PASSWD) + "/2"],
+            "group_expiry": 3600 * 24 * 2,
             "symmetric_encryption_keys": [SECRET_KEY],
         },
     },
@@ -308,3 +321,6 @@ HASHID_FIELD_ALLOW_INT_LOOKUP = env.bool("HASHID_FIELD_ALLOW_INT_LOOKUP", defaul
 #         },
 #     },
 # }
+
+
+LocalIP = "103.135.248.198"

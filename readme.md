@@ -1,5 +1,14 @@
 # My Django template
 
+## 参考
+https://github.com/ydf0509/proxypool_framework
+https://zhuanlan.zhihu.com/p/84361860
+https://github1s.com/cwjokaka/ok_ip_proxy_pool/blob/HEAD/src/validator/anonymity_validator.py
+https://github1s.com/jhao104/proxy_pool/blob/HEAD/helper/validator.py
+https://www.zhihu.com/search?q=kafka%E6%98%AF%E4%BB%80%E4%B9%88&utm_content=search_suggestion&type=content
+https://github.com/ydf0509/distributed_framework
+
+
 ## 启动
 ```shell
 # 重载 uvicorn 的 worker 获得更好的性能

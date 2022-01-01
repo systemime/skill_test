@@ -21,6 +21,7 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("share/", include("apps.share.urls")),
+    path("proxy_pool/", include("apps.proxy_pool.urls")),
 ]
 
 if settings.ENV_FLAG == "local":

@@ -22,8 +22,8 @@ pidfile = "logs/gunicorn.pid"
 daemon = False  # 是否是守护进程（后台运行）
 
 # 启动的进程数
-# workers = os.cpu_count()
-workers = 2
+workers = os.cpu_count()
+# workers = 4
 # 指定每个进程开启的线程数
 threads = 1
 
